@@ -8,14 +8,17 @@ class TestSingleton
 
 	public static function getInstance()
     {
-        if (!isset(self::$instance)) {
+        if (! isset(self::$instance)) {
             self::$instance = new self();
         }
         return self::$instance;
     }
 
-    public function __clone()
+    private function __clone()
     {
         throw new Exception('You cannot clone singleton object');
     }
+
+    // other methods here ...
 }
+var_dump(TestSingleton::getInstance());
